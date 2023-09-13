@@ -110,8 +110,9 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     private func next() {
-        index = (index + 1) % frames.count
-        statusItem.button?.image = frames[index]
+        let slowDownFactor = 3
+        index = (index + 1) % (frames.count * slowDownFactor)
+        statusItem.button?.image = frames[index / slowDownFactor]
     }
 
     private func startRunning() {
